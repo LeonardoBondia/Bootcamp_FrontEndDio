@@ -1,0 +1,306 @@
+/* ===========================
+   STRANGER THINGS THEME CSS
+   =========================== */
+
+/* ---- Fonts (Google) ---- */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;800&display=swap");
+
+/* ---- CSS Variables ---- */
+:root{
+  --bg-0: #0b0b0d;          /* quase preto */
+  --bg-1: #121217;          /* painel/cards */
+  --bg-2: #1a1b22;          /* hover sutil */
+  --tx-0: #e8e8ef;          /* texto principal */
+  --tx-1: #a7abb8;          /* texto secundário */
+  --brand: #e50914;         /* vermelho Netflix-like */
+  --brand-2: #ff3344;       /* acento/brilho */
+  --muted: #2c2e3a;         /* bordas suaves */
+  --radius: 16px;
+  --shadow: 0 15px 35px rgba(0,0,0,.45);
+}
+
+/* ---- Reset + Base ---- */
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+  color: var(--tx-0);
+  background:
+    radial-gradient(1000px 600px at 10% -10%, rgba(229,9,20,.18), transparent 60%),
+    radial-gradient(800px 500px at 90% 110%, rgba(255,51,68,.14), transparent 60%),
+    linear-gradient(180deg, #0a0a0c 0%, #0c0c11 60%, #0a0a0d 100%);
+}
+
+/* Links */
+a{ color: var(--tx-0); text-decoration: none; }
+a:hover{ color: var(--brand-2); }
+
+/* Media defaults */
+img, iframe, picture{ max-width: 100%; height: auto; display: block; }
+
+/* ---- Layout (CSS Grid no body) ---- */
+body{
+  display: grid;
+  grid-template-columns: 280px 1fr 320px; /* left aside | main | right sidebar */
+  grid-template-areas:
+    "header header header"
+    "aside  main   sidebar";
+  gap: 24px;
+  padding: 24px;
+}
+
+/* Header */
+header{
+  grid-area: header;
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-radius: var(--radius);
+  border: 1px solid var(--muted);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+}
+
+header img{
+  filter: drop-shadow(0 6px 12px rgba(229,9,20,.3));
+}
+
+/* Main / Section */
+main{
+  grid-area: main;
+}
+
+main section{
+  background: var(--bg-1);
+  border: 1px solid var(--muted);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+/* Titles */
+h1, h2, h3{
+  margin: 0 0 12px 0;
+  line-height: 1.1;
+  letter-spacing: .6px;
+}
+
+h1{
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: clamp(28px, 5vw, 56px);
+  color: var(--brand);
+  text-shadow:
+    0 0 12px rgba(229,9,20,.35),
+    0 0 28px rgba(229,9,20,.18);
+  margin-bottom: 18px;
+}
+
+h2{
+  font-weight: 800;
+  font-size: clamp(18px, 2.6vw, 28px);
+  color: #f1f2f6;
+  border-left: 4px solid var(--brand);
+  padding-left: 12px;
+  margin-top: 28px;
+}
+
+/* Paragraphs and lists */
+p{
+  color: var(--tx-1);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 12px 0 0 0;
+}
+
+ul{
+  margin: 14px 0 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+li{
+  color: var(--tx-1);
+}
+
+/* Embedded media */
+iframe{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 12px;
+  margin-top: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+
+/* Pictures / images inside content */
+main picture,
+main img{
+  border-radius: 12px;
+  border: 1px solid var(--muted);
+  background: #0c0d12;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  margin: 16px 0;
+}
+
+/* ---- Left Aside (anchors dos personagens) ---- */
+aside{
+  grid-area: aside;
+  align-self: start;
+  position: sticky;
+  top: 86px; /* abaixo do header */
+  background: var(--bg-1);
+  border: 1px solid var(--muted);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  max-height: calc(100dvh - 110px);
+  overflow: auto;
+}
+
+aside h3{
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  color: #fff;
+  font-size: 28px;
+  letter-spacing: .8px;
+  margin-bottom: 8px;
+}
+
+aside ul{
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 16px 0;
+  display: grid;
+  gap: 8px;
+}
+
+aside li a{
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  border: 1px solid transparent;
+  transition: .2s ease;
+}
+
+aside li a:hover{
+  border-color: var(--brand);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(229,9,20,.18);
+}
+
+/* Aside picture */
+aside picture, aside img{
+  border-radius: 12px;
+  border: 1px solid var(--muted);
+  background: #0c0d12;
+}
+
+/* ---- Right Sidebar (ficha técnica) ---- */
+.sidebar{
+  grid-area: sidebar;
+  align-self: start;
+  position: sticky;
+  top: 86px;
+  background: linear-gradient(180deg, #13131a, #101017);
+  border: 1px solid var(--muted);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.sidebar h3{
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.sidebar picture, .sidebar img{
+  border-radius: 12px;
+  border: 1px solid var(--muted);
+  margin: 10px 0 14px 0;
+}
+
+.sidebar ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.sidebar li{
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  border: 1px solid transparent;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+/* Pequeno destaque em strong */
+.sidebar li strong{
+  color: var(--tx-0);
+}
+
+/* ---- Helpers ---- */
+blockquote{
+  margin: 16px 0;
+  padding: 14px 16px;
+  border-left: 4px solid var(--brand);
+  background: rgba(255,255,255,.02);
+  color: var(--tx-1);
+  border-radius: 8px;
+}
+
+/* ---- Accessibility & Focus ---- */
+:focus-visible{
+  outline: 2px solid var(--brand-2);
+  outline-offset: 2px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1200px){
+  body{
+    grid-template-columns: 240px 1fr 280px;
+  }
+}
+
+@media (max-width: 980px){
+  body{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "aside"
+      "sidebar";
+    padding: 16px;
+    gap: 16px;
+  }
+
+  aside, .sidebar{
+    position: static;
+    max-height: none;
+  }
+
+  header{
+    position: static;
+  }
+
+  main section{
+    padding: 22px;
+  }
+}
+
+@media (max-width: 560px){
+  h1{ font-size: 34px; }
+  h2{ font-size: 20px; }
+  p{ font-size: 15px; }
+  header{ padding: 12px 14px; }
+}
