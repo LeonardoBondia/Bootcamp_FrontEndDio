@@ -18,3 +18,6 @@ Repositório com páginas web desenvolvidas durante o **Santander Bootcamp (DIO)
 - Responsividade Mobile-First  
 
 ---
+## 🏅 Certificado
+
+ ![Certificado HTML Web Developer](HTML.png)
